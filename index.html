@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote on Black Mesa: Blue Shift</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .chart-container {
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+        }
+        img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover; /* Ensures image maintains aspect ratio */
+        }
+    </style>
+</head>
+<body>
+    <h1>Vote: Will Black Mesa: Blue Shift Release This Month?</h1>
+    <img src="https://preview.redd.it/black-mesa-blue-shift-v0-t1orvx1f57qb1.png?auto=webp&s=ec119f160b73d75e41dcd93308f1c7e16d4385ff" alt="Black Mesa: Blue Shift">
+    
+    <div>
+        <button onclick="vote('yes')">Vote Yes</button>
+        <button onclick="vote('no')">Vote No</button>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="voteChart"></canvas>
+    </div>
+
+    <script>
+        // Initialize chart
+        const ctx = document.getElementById('voteChart').getContext('2d');
+        const voteChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Yes', 'No'],
+                datasets: [{
+                    label: 'Votes',
+                    data: [0, 0], // Initial values
+                    backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)'],
+                    borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+
+        function updateChart(data) {
+            voteChart.data.datasets[0].data = [data.yes, data.no];
+            voteChart.update();
+        }
+
+        function vote(type) {
+            fetch('https://api.github.com/repos/USERNAME/REPO_NAME/contents/data.json')
+                .then(response => response.json())
+                .then(data => {
+                    const votes = JSON.parse(atob(data.content));
+                    if (type === 'yes') {
+                        votes.yes++;
+                    } else if (type === 'no') {
+                        votes.no++;
+                    }
+                    updateChart(votes);
+                    // Save updated votes
+                    const updatedData = btoa(JSON.stringify(votes));
+                    fetch('https://api.github.com/repos/USERNAME/REPO_NAME/contents/data.json', {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': 'token YOUR_GITHUB_TOKEN',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            message: 'Update votes',
+                            content: updatedData
+                        })
+                    });
+                });
+        }
+
+        // Load initial votes
+        fetch('https://api.github.com/repos/USERNAME/REPO_NAME/contents/data.json')
+            .then(response => response.json())
+            .then(data => {
+                const votes = JSON.parse(atob(data.content));
+                updateChart(votes);
+            });
+    </script>
+</body>
+</html>
