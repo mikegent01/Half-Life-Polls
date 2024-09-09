@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market 4 - Dark Interval Release</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212; /* Very dark background for contrast */
+            color: #e0e0e0;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background: url('https://cdn.pixabay.com/photo/2016/11/29/09/07/space-1867813_960_720.jpg') no-repeat center center/cover;
+            color: #e0e0e0;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 2px 2px 5px #000;
+        }
+
+        .container {
+            padding: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #1e1e1e;
+            border: 3px solid #009688; /* Vibrant teal for futuristic look */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            position: relative;
+            z-index: 2;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            color: #00bcd4; /* Bright cyan for header text */
+            border-bottom: 2px solid #00bcd4;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            text-shadow: 1px 1px 4px #000;
+        }
+
+        .vote-buttons {
+            text-align: center;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #00bcd4; /* Bright cyan */
+            color: #121212;
+            transition: all 0.3s ease;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        button:hover {
+            background-color: #0097a7;
+            box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.9);
+        }
+
+        .chart-container {
+            margin: 20px auto;
+            max-width: 950px;
+            height: 550px;
+            border: 3px solid #009688; /* Vibrant teal */
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #1e1e1e;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .home-button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            color: #e0e0e0;
+            background-color: #00bcd4; /* Bright cyan */
+            border: 2px solid #121212;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .home-button:hover {
+            background-color: #0097a7;
+            border-color: #121212;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+        }
+
+        .additional-info {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            border: 3px solid #009688; /* Vibrant teal */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .additional-info h3 {
+            margin-top: 0;
+            color: #00bcd4; /* Bright cyan */
+            text-shadow: 1px 1px 4px #000;
+        }
+
+        .additional-info p {
+            margin: 0;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Will Dark Interval Release Part 2 This Year?</h1>
+    </div>
+    <div class="container">
+        <div class="section vote-section">
+            <h2>Cast Your Vote Below</h2>
+            <p>Click on one of the buttons to cast your vote regarding the release of Dark Interval: Part 2.</p>
+            <div class="vote-buttons">
+                <button onclick="window.open('https://forms.gle/fmEZPxP7JL9UL4ye6', '_blank')">Vote Yes</button>
+                <button onclick="window.open('https://forms.gle/fmEZPxP7JL9UL4ye6', '_blank')">Vote No</button>
+            </div>
+        </div>
+        <div class="section chart-container">
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRKxxy0BDJb7hUmo2THpO5xq_xQ5d7OYg5XL0AqeK-CjLvh0cHhRIEYAAxLrxmtsv6FmYHOEx0MikK6/pubhtml?gid=1467507928&amp;single=true&amp;widget=true&amp;headers=false" frameborder="0"></iframe>
+        </div>
+        <div class="section additional-info">
+            <h3>Additional Information</h3>
+            <p>Dark Interval is a campaign mod created as an alternate take on Half-Life 2, incorporating selected early story drafts and cut content. We're creating new maps, assets, characters, and story beats to fill in the blanks, and to build a coherent story of its own. The mod is released in episodes, the most recent being Dark Interval: Part I - an intro chapter to the bigger picture.</p>
+            <p>It is said to be coming out Fall 2024.</p>
+        </div>
+        <a href="index.html" class="home-button">Back to Home Page</a>
+    </div>
+</body>
+</html>
